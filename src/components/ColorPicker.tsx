@@ -47,10 +47,10 @@ export const ColorPicker = styled(basePicker)`
     --accent-color: #${props => convertToHex(props.value)};
     -webkit-appearance: none; /* Override default CSS styles */
     appearance: none;
-    width: 99%; /* Full-width */
+    width: 30em;
     height: 1em; /* Specified height */
     background-color: var(--accent-color);
-    border: ${props => props.theme.accent} solid 0.5em; /* Remove outline */
+    border: ${props => props.theme.accent} solid 0.3em; /* Remove outline */
     -webkit-transition: height .2s; /* 0.2 seconds transition on hover */
     transition: height .2s;
     border-radius: 3em;

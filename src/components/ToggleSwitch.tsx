@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import styled from 'styled-components';
 
 // Define styled components
@@ -6,12 +6,13 @@ const SwitchContainer = styled.label`
     position: relative;
     display: inline-block;
     width: 40px;
-    height: 20px;
+    height: 1.2em;
 `;
 
 const Slider = styled.span`
     position: absolute;
     cursor: pointer;
+    width: 40px;
     top: 0;
     left: 0;
     right: 0;
@@ -26,10 +27,10 @@ const Slider = styled.span`
     &:before {
         position: absolute;
         content: "";
-        height: 16px;
-        width: 16px;
-        left: 2px;
-        bottom: 2px;
+        height: 1em;
+        width: 1em;
+        left: 0.1em;
+        bottom: 0.1em;
         background-color: ${props => props.theme.accent};
         -webkit-transition: transform .4s;
         transition: transform .4s;

@@ -1,28 +1,23 @@
-import React, {useState} from 'react';
-// @ts-ignore
-import logo from './logo.svg';
-import './App.css';
-import {Button} from "./components/Button";
-import {ColorPicker} from "./components/ColorPicker";
-import {createGlobalStyle, ThemeProvider} from "styled-components";
-import {theme} from "./components/theme";
-import {ToggleSwitch} from "./components/ToggleSwitch";
-import {GlobalStyle} from "./components/GlobalStyle";
+import React from 'react';
 import {Introduction} from "./pages/main/Introduction";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 
-function App() {
-  const [value, setValue] = useState(0x00ff00)
-  const [checked, setChecked] = useState(false);
+const router = createBrowserRouter([
+    {
+      path: "/",
+      children:
+          [
+              {
+                path: "/",
+                element: <Introduction/>
+              }
+              ]
+    }
+    ]
+)
 
-  return <>
-    <ThemeProvider theme={theme(value, checked)}>
-      <GlobalStyle/>
-        <Button filled onClick={() => {alert("Clicked!");}}>Hello me button!</Button>
-        <ColorPicker setValue={setValue} value={value}/>
-        <ToggleSwitch checked={checked} setChecked={setChecked}/>
-      <Introduction/>
-    </ThemeProvider>
-  </>
+export function App() {
+  return <RouterProvider router={router} />;
 }
 
 export default App;
