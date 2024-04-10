@@ -7,12 +7,14 @@ import {ColorPicker} from "../../components/ColorPicker";
 import {theme} from "../../components/theme";
 import {ToggleSwitch} from "../../components/ToggleSwitch";
 import {GlobalStyle} from "../../components/GlobalStyle";
+import {Projects} from "./Projects";
 
 const BaseIntroduction = ({className}:{className?:string}) => {
     const [onMouse, setOnMouse] = useState(true)
     const navigate = useNavigate()
     const [color, setColor] = useState(0)
     const [inverted, setInverted] = useState(true)
+    const [selection, setSelection] = useState<boolean | undefined>(undefined)
     return (<>
         <ThemeProvider theme={theme(color,inverted)}>
             <GlobalStyle/>
@@ -35,14 +37,15 @@ const BaseIntroduction = ({className}:{className?:string}) => {
                     <p>and micro-services enthusiast</p>
                 </div>
             </div>
+            <Projects selection={selection} setSelection={setSelection}/>
         </ThemeProvider>
     </>)
 }
 
 export const Introduction = styled(BaseIntroduction)`
-    
     border: 0.5em dashed ${props => props.theme.accent};
     padding-left: 0.5em;
+    position: relative;
     font-size: 2em;
     display: flex;
     justify-content: space-between;
@@ -51,5 +54,6 @@ export const Introduction = styled(BaseIntroduction)`
     p{
         text-align: right;
     }
+    z-index: 2;
     
 `

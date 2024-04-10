@@ -18,4 +18,7 @@ export const Button = styled(baseButton)`
     white-space: nowrap;
     border: 0.2em solid ${props => props.theme.accent};
     border-radius: 3em;
+    &:hover{
+        cursor: pointer;
+    }
 `

@@ -17,6 +17,7 @@ const baseBar = ({className, children, setOnMouse}: {className?: string, childre
 
 export const NavBar = styled(baseBar)`
     padding: 10px 20px;
+    position: relative;
     display: flex;
     justify-content: space-between;
     background-color: ${props => props.theme.bg};
@@ -25,4 +26,5 @@ export const NavBar = styled(baseBar)`
     opacity: ${props => props.onMouse ? 1 : 0};
     max-height: ${props => props.onMouse ? 30 : 0}px;
     transition: opacity .4s, max-height .4s;
+    z-index: 1;
 `
