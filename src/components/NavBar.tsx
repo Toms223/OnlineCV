@@ -19,12 +19,12 @@ export const NavBar = styled(baseBar)`
     padding: 10px 20px;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: ${props => props.theme.bg};
     align-items: center;
-    gap: 1em;
     opacity: ${props => props.onMouse ? 1 : 0};
     max-height: ${props => props.onMouse ? 30 : 0}px;
     transition: opacity .4s, max-height .4s;
+    transform: scale(1);
     z-index: 1;
 `

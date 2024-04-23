@@ -3,14 +3,16 @@ import React from "react";
 import {Minecraft} from "./Minecraft";
 import {SnowCrystal} from "./SnowCrystal";
 
-const BaseProjects = ({className, selection, setSelection}:{className?: string, selection: boolean | undefined, setSelection:React.Dispatch<React.SetStateAction<boolean | undefined>>}) => {
+
+
+const BaseProjects = ({className, selection}:{className?: string, selection: boolean | undefined}) => {
     return <>
         <div className={className}>
-            <div className={"mc"} >
-                <Minecraft setSelection={setSelection}/>
+            <div className={"mc"}>
+                Henlo
             </div>
-            <div className={"w"} >
-                <SnowCrystal setSelection={setSelection}/>
+            <div className={"w"}>
+                Henlo2
             </div>
         </div>
     </>
@@ -18,18 +20,24 @@ const BaseProjects = ({className, selection, setSelection}:{className?: string, 
 
 export const Projects = styled(BaseProjects)`
     display: flex;
-    justify-content: space-between;
-    padding-left: 30em;
-    padding-right: 30em;
-    padding-top: 10em;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vw;
+    transform: scale(${props => props.selection != undefined ? 1 : 0});
     
-    & .mc{
+    & .mc {
+        position: absolute;
+        z-index: 1;
         opacity: ${props => (props.selection === undefined || !props.selection) ? 1 : 0};
-        transition: opacity .4s;
+        transform: scale(${props => (props.selection === undefined || !props.selection) ? 1 : 0});
+        transition: .4s;
     }
 
-    & .w{
+    & .w {
+        position: absolute;
+        z-index: 2;
         opacity: ${props => (props.selection === undefined || props.selection) ? 1 : 0};
-        transition: opacity .4s;
+        transform: scale(${props => (props.selection === undefined || props.selection) ? 1 : 0});
+        transition: .4s;
     }
 `
