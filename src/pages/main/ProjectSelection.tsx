@@ -18,22 +18,23 @@ const BaseProjects = ({className, selection, setSelection}:{className?: string, 
 
 export const ProjectSelection = styled(BaseProjects)`
     display: flex;
+    position: relative;
     justify-content: space-between;
     padding-top: 10em;
     padding-left: 25vw;
     padding-right: 25vw;
 
     & .mc {
-        opacity: ${props => (props.selection === undefined || !props.selection) ? 1 : 0};
-        transform: scale(${props => (props.selection === undefined || !props.selection) ? 1 : 0}) 
-        ${props => (!props.selection && props.selection !== undefined) ? `translateX(${25 - (61/(window.innerWidth/100))}vw)` : ''};
-        transition: .4s;
+        opacity: ${props => (props.selection === undefined || props.selection) ? 1 : 0};
+        transform: scale(${props => (props.selection === undefined || props.selection) ? 1 : 0}) 
+        ${props => (props.selection) ? `translateX(${25 - (61/(window.innerWidth/100))}vw)` : ''};
+        transition: opacity .4s, transform .4s;
     }
 
     & .w {
-        opacity: ${props => (props.selection === undefined || props.selection) ? 1 : 0};
-        transform: scale(${props => (props.selection === undefined || props.selection) ? 1 : 0}) 
-            ${props => (props.selection) ? `translateX(${-25 + (61/(window.innerWidth/100))}vw)` : ''};
-        transition: .4s;
+        opacity: ${props => (props.selection === undefined || !props.selection) ? 1 : 0};
+        transform: scale(${props => (props.selection === undefined || !props.selection) ? 1 : 0}) 
+            ${props => (!props.selection && props.selection !== undefined) ? `translateX(${-25 + (61/(window.innerWidth/100))}vw)` : ''};
+        transition: opacity .4s, transform .4s;
     }
 `

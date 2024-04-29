@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const BaseMinecraft = ({className, setSelection}:{className?: string, setSelection:React.Dispatch<React.SetStateAction<boolean | undefined>>}) => {
     return <>
-        <Button onClick={() => setSelection(true)}>
+        <Button onClick={() => setSelection(false)}>
             <div className={className}>
                 <div className="cube">
                     <div className="face top"></div>

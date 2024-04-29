@@ -4,7 +4,7 @@ import React from "react";
 
 const BaseSnowCrystal = ({className, setSelection}:{className?: string, setSelection:React.Dispatch<React.SetStateAction<boolean| undefined>>}) => {
     return <>
-        <Button onClick={() => setSelection(false)}>
+        <Button onClick={() => setSelection(true)}>
             <div className={className}>❅</div>
         </Button>
     </>

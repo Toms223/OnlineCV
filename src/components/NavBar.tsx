@@ -1,12 +1,18 @@
-import React, {ReactNode} from "react";
+import React, {Dispatch, ReactNode, SetStateAction} from "react";
 import styled from "styled-components";
 
-const baseBar = ({className, children, setOnMouse}: {className?: string, children?: ReactNode, onMouse: boolean, setOnMouse: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const baseBar = ({className, children, setOnMouse, setScrollUp}: {className?: string, children?: ReactNode, onMouse: boolean, setOnMouse: Dispatch<SetStateAction<boolean>>, setScrollUp: Dispatch<SetStateAction<boolean>>;}) => {
     return <>
         <nav
             className={className}
-            onMouseEnter={() => setOnMouse(true)}
-            onMouseLeave={() =>setOnMouse(false)}
+            onMouseEnter={() => {
+                setOnMouse(true)
+                setScrollUp(false)
+            }}
+            onMouseLeave={() => {
+                setOnMouse(false)
+                setScrollUp(false)
+            }}
         >
             {children}
         </nav>
@@ -16,15 +22,18 @@ const baseBar = ({className, children, setOnMouse}: {className?: string, childre
 
 
 export const NavBar = styled(baseBar)`
-    padding: 10px 20px;
-    position: relative;
+    position: fixed;
     display: flex;
+    width: 100%;
     justify-content: space-around;
     background-color: ${props => props.theme.bg};
     align-items: center;
     opacity: ${props => props.onMouse ? 1 : 0};
-    max-height: ${props => props.onMouse ? 30 : 0}px;
-    transition: opacity .4s, max-height .4s;
-    transform: scale(1);
+    transition: opacity .2s;
     z-index: 1;
+    & .buttons{
+        font-size: ${window.innerWidth < 500 ? '3vw' : '1em'};
+        display: flex;
+        gap: 1vw;
+    }
 `
